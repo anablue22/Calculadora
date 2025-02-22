@@ -1,3 +1,116 @@
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+body {
+    min-height: 100vh;
+    background-color: rgb(248, 140, 172);
+    display: grid;
+    place-items: center;
+}
 
+.calculadora {
+    background-color: rgb(255, 196, 250);
+    color: black;
+    width: 350px; 
+    max-width: 100%;
+    padding: 3rem; 
+    border-radius: 2rem; 
+    border: 3px groove rgb(248, 162, 248);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: .75rem; /* Aumento un poco el espaciado */
+    box-shadow: 
+        0 0 20px rgb(252, 137, 242),
+        inset 0 0 10px rgba(255, 255, 255, 0.5); /* Añadí brillo interior */
+    transition: transform 0.3s ease; /* transición suave */
+}
 
+.calculadora:hover {
+    transform: translateY(-5px); /* Efecto de flotación al pasar el mouse */
+}
+
+.resultado {
+    grid-column: 1 / 5;
+    background-color: rgb(192, 168, 235);
+    padding: 1.5rem; 
+    font-size: 2rem; 
+    text-align: right; 
+    border-radius: .75rem; /* Aumento un poco el radio */
+    border: 2px groove rgb(235, 121, 235);
+    margin-bottom: 1.5rem;
+    font-family: monospace;
+    font-weight: bold;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra interior */
+    position: relative;
+    overflow: hidden;
+}
+
+.resultado::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent
+    ); /* Efecto de brillo en la parte superior */
+}
+
+.button {
+    background-color: rgb(153, 121, 240);
+    color: black;
+    padding: 1.5rem .5rem; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    border-radius: .75rem;
+    border: 2px groove rgb(235, 121, 235);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.button:hover {
+    background-color: rgb(210, 86, 248);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    transform: translateY(1px); /* Efecto al presionar */
+}
+
+#cero {
+    grid-column: span 2;
+}
+
+#igual {
+    grid-row: span 2;
+    background-color: rgb(170, 93, 243);
+    font-weight: bold;
+}
+
+#igual:hover {
+    background-color: rgb(233, 78, 78);
+    box-shadow: 0 0 15px rgba(233, 78, 78, 0.5); /* Brillo al hover */
+}
+
+.button:active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease;
+}
