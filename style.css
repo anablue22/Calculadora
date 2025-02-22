@@ -15,14 +15,14 @@ body {
 .calculadora {
     background-color: rgb(255, 196, 250);
     color: black;
-    width: 350px; 
+    width: 250px; 
     max-width: 100%;
-    padding: 3rem; 
+    padding: 1.5rem; 
     border-radius: 2rem; 
     border: 3px groove rgb(248, 162, 248);
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
-    gap: .75rem; /* Aumento un poco el espaciado */
+    gap: .05rem; /* Aumento un poco el espaciado */
     box-shadow: 
         0 0 20px rgb(252, 137, 242),
         inset 0 0 10px rgba(255, 255, 255, 0.5); /* Añadí brillo interior */
@@ -36,8 +36,8 @@ body {
 .resultado {
     grid-column: 1 / 5;
     background-color: rgb(192, 168, 235);
-    padding: 1.5rem; 
-    font-size: 2rem; 
+    padding: 1rem; 
+    font-size: 1.5rem; 
     text-align: right; 
     border-radius: .75rem; /* Aumento un poco el radio */
     border: 2px groove rgb(235, 121, 235);
@@ -66,7 +66,7 @@ body {
 .button {
     background-color: rgb(153, 121, 240);
     color: black;
-    padding: 1.5rem .5rem; 
+    padding: 1rem .0.5rem; 
     display: flex; 
     justify-content: center;
     align-items: center;
