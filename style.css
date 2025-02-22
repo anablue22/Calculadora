@@ -72,6 +72,7 @@ body {
     align-items: center;
     border-radius: .75rem;
     border: 2px groove rgb(235, 121, 235);
+    font-size: 20px;
     cursor: pointer;
     font-weight: 600;
     transition: all 0.2s ease;
@@ -97,6 +98,7 @@ body {
     grid-row: span 2;
     background-color: rgb(170, 93, 243);
     font-weight: bold;
+    font-size: 20px;
 }
 
 #igual:hover {
