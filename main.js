@@ -1,40 +1,42 @@
-const pantalla = document.querySelector(".resultado"); /*selecciona la pantalla*/
-const botones = document.querySelectorAll(".button"); /*selecciona todos los botones cuentan con esa clase*/
+const pantalla = document.querySelector(".resultado"); // Selecciona la pantalla
+const botones = document.querySelectorAll(".button"); // Selecciona todos los botones
 
 botones.forEach(boton => { 
-    boton.addEventListener("click", () => { /*itera sobre cada btón*/
-
+    boton.addEventListener("click", () => { // Itera sobre cada botón
         const botonOprimir = boton.textContent;
 
-        /*Manejo del botón C*/
-        if(boton.id === "c"){ /*Con este siempre se va a poner 0 cuando se de a la C*/
+        // Manejo del botón C (limpiar pantalla)
+        if (boton.id === "c") {
             pantalla.textContent = "0"; 
             return;
         }
 
-        /*Manejo del botón borrar*/
-        if(boton.id === "borrar" ){
-            if(pantalla.textContent.length === 1 || pantalla.textContent === "Error"){
-                pantalla.textContent = "0";
-        } else {
-            pantalla.textContent = pantalla.textContent.slice(0, -1); /* se elimina el último elemento impreso en la pantalla */
+        // Manejo del botón borrar (eliminar último carácter)
+        if (boton.id === "borrar") {
+            pantalla.textContent = (pantalla.textContent.length === 1 || pantalla.textContent === "Error") 
+                ? "0" 
+                : pantalla.textContent.slice(0, -1);
+            return;
         }
-        return;
-    }
-        if(boton.id === "igual"){
-            try{
-                pantalla.textContent = eval(pantalla.textContent); /*quiero que me muestre la evaluación de lo mostrado en la pantalla*/
+
+        // Manejo del botón igual (evaluar expresión sin `eval()`)
+        if (boton.id === "igual") {
+            try {
+                pantalla.textContent = calcularExpresion(pantalla.textContent);
             } catch {
                 pantalla.textContent = "Error";
-            } return; 
-        } /*Estoy usando try y catch para manejar posibles errores de la expresión matemática en la pantalla*/
-
-        /*Manejo con otros botones*/
-        if(pantalla.textContent === "0" || pantalla.textContent === "Error"){/*En cualquiera de estos casos, quiero que la pantalla muestre el botón que orimo*/
-            pantalla.textContent = botonOprimir;
-        }else {
-            pantalla.textContent += botonOprimir;
+            }
+            return; 
         }
-    }) 
-})
-     
+
+        // Manejo de otros botones (agregar números y operadores)
+        pantalla.textContent = (pantalla.textContent === "0" || pantalla.textContent === "Error") 
+            ? botonOprimir 
+            : pantalla.textContent + botonOprimir;
+    }); 
+});
+
+/* Función para evaluar la expresión matemáticamente sin `eval()` */
+function calcularExpresion(expresion) {
+    return new Function('return ' + expresion)();
+}   
